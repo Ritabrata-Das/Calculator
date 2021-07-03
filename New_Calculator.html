@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="New_Calculator_css.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://mail.google.com/mail/"/>
+    <title>My Website</title>
+    <style>
+        .heading{
+            border: none;
+            outline: none;
+            display: block;
+            margin: -19.6px 19px;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+            /*font-weight: bold;*/
+            font-family: stencil;
+        }
+        .calculator{
+            border: 3px solid Black;
+            width: 235px;
+            height: 430px;
+            margin-left: 37%;
+        }
+        .num{
+            width: 49px;
+            position: static;
+            margin-top: 30px;
+            margin-left: 5px;
+            justify-content: spaceevenly;
+            background-color: rgb(252,252,252);
+            border: none;   
+            height: 40px;
+            outline: none;
+        }
+        .num:hover{
+            background-color: rgb(223,223,223);
+            cursor: pointer;
+        }
+        .sign{
+            width: 49px;
+            position: static;
+            margin-top: 30px;
+            margin-left: 5px;
+            border: none;   
+            height: 40px;
+            background: rgb(220,220,220);
+            outline: none;
+        }
+        .sign:hover{
+            background: rgb(200,200,200);
+            cursor:context-menu;
+        }
+        .controls{
+            margin-top: -24px;
+        }
+        .firstrow{
+            margin-top: -17px;
+        }
+        .secondrow{
+            margin-top: -17px;  
+        }
+        .thirdrow{
+            margin-top: -17px; 
+        }
+        .fourthrow{
+            margin-top: -17px; 
+        }
+        .numpad1{
+            justify-content: spaceevenly;
+            margin-top: 3px;
+        }
+        .specialrow{
+            margin-top: -26px;
+        }
+        .numbers{
+            margin-top: 5px;
+        }
+        .equal{
+            width: 49px;
+            position: static;
+            margin-top: 30px;
+            margin-left: 5px;
+            border: none;   
+            height: 40px;
+            background: rgb(146,193,231);
+            outline: none;
+        }
+        .equal:hover{
+            background: rgb(74,158,224);
+        }
+        .display{
+            text-align: right;
+            font-size: 25px;
+            font-weight: bold;
+            transition-property: all;
+            transition-duration: 2s;
+        }
+        
+        #subRes{
+            transition-property: all;
+            transition-duration: 2s;
+        }
+        .flaginp{
+            display: none;
+        }
+        img{
+            margin-top: 8px;
+            margin-left: 5px;
+            position: relative;
+        }
+        img:hover{
+            cursor: grab;
+        }
+        .btn{
+            cursor: pointer;
+            display: block;
+        }
+        .menu{
+            position: relative;
+            margin-left: 10px;
+            margin-top: 2px;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
+            text-align: center;
+            vertical-align : middle;
+            text-indent: -3px;
+            font-weight: bolder;
+        }
+        .display:invalid{
+            background: #000;
+        }
+    </style>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+</head> 
+<body>
+    <!--Main Calculator Part-->
+    <div class = "calculator">       
+        <!--Calculating Part-->
+        <div class="container">
+            <!-- <button onclick="test();" class="menu" style="position: absolue;">☰</button> -->
+            <!-- <label class="heading"  style="margin-left: 20px;margin-top: -19px;">Standard</label> -->
+            <!-- <button class="btn">test</button> -->
+            <!-- <img src="download.jpg"  width="15px" height="15px" /> -->
+        </div>
+        <form Name = "calculatorForm" >
+            <div style="border: 2px solid rgb(255, 255, 255);outline: none;height: 32px;display: block;">
+            <button onclick="test();" class="menu" style="">☰</button>
+            <!--Main Display Part-->
+            </div>
+            <div class = "headDisplay" style = "height: 50px;position: relative;margin-top: -35.6px;" Name = "headDisplay">
+                <!--Main Display Box-->
+                <input class = "display" style = "width: 231px;height: 76px;margin-top: 10px;margin-left: -2px;border:  2px solid black;margin-top: 30px;background: rgb(242,242,242);outline: none;position: absolute;" Name = "display" type = "text" id = "display1" value = "0">
+                <input class =  "flag flaginp" id = "flag" value = '0'>
+                <input class =  "flag1 flaginp" id = "flag1" name="flag1" value = '-1'>
+                <input class =  "flag2 flaginp" id = "flag2" name="flag2" value = '-1'>
+                <input class =  "flag3 flaginp" id = "flag3" name="flag3" value = '0'>
+                <input class =  "flag4 flaginp" id = "flag4" name="flag4" value = '-1'>
+            </div>
+            <!--Sub Result Display Box (Sub Result  -  Down)-->                                                      
+            <input type = "text" class = "subResult" style = "border: none;text-align: right;margin-left: -0.2px;margin-top: 31px;width: 231.5px;position: absolute;height: 20px;background: rgb(242,242,242);display: block;outline: none;" Name = "subResult" id = "subRes" />
+            <input type = "text" class = "subResult1" style = "border: none;text-align: right;margin-left: -0.2px;margin-top: -18px;width: 231.5px;position: absolute;height: 20px;background: rgb(242,242,242);display: block;outline: none;" Name = "subResult1" id = "subRes1" />
+            <!--Main Number Pad-->
+            <div class = "wholenumberPad" Name = "Numpad" style = "border: 2px solid rgb(0, 0, 0);height: 322.7px;position: relative;margin-left: -2px;margin-top: 55px;width: 235px;background-color: rgb(241,241,241)">
+                <div class = "numpad1">
+                <!--Formattings-->
+                <div class = "controls">        
+                    <input type = "button" class = "sign" value = "(" onclick="calculatorForm.display.value += '('; calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                    <input type = "button" class = "sign" value = ")" onclick="calculatorForm.display.value += ')'; calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                    <input type = "button" class = "sign" value = "C" onclick = "calculatorForm.display.value = '';calculatorForm.subResult.value = '';calculatorForm.subResult1.value = '';">
+<input type = "button" class = "sign" value = "DEL" onclick="del();calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                </div>
+                <!--Special Number Row-->
+                <div class  = "numbers">
+                    <div class = "specialrow">
+                        <input type = "button" class = "sign" value = "1/x" onclick="calculatorForm.display.value += '1/';calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                        <input type = "button" class = "sign" value = "x sqr" name = "x_sqr" onclick="refresh(x_sqr.value);calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                        <input type = "button" class = "sign" value = "sqrt(x)" name="x_sqrt" onclick="refresh(x_sqrt.value);calculatorForm.subResult.value = eval(calculatorForm.display.value);">
+                        <input type = "button" class = "sign" style  = "font-size: 18px" value = "÷" name="divsign" onclick="shownum(divsign.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    </div>                                               
+                    <!--Common Number Pad-->
+                    <div class = "firstrow">
+                        <input type = "button" class = "num" style = "font-weight: bold;" id = "spe" value = "7" name="num7" onclick = "shownum(num7.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                        <input type = "button" class = "num" style = "font-weight: bold;" value = "8" name="num8" onclick = "shownum(num8.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                        <input type = "button" class = "num" style = "font-weight: bold;" value = "9" name="num9" onclick = "shownum(num9.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                        <input type = "button" class = "sign" value = "X" name="nummul" onclick = "shownum(nummul.value)">
+                    </div>
+                    <div class  = "secondrow">
+                    <input type = "button" class = "num" style = "font-weight: bold;" id = "spe" value = "4" name="num4" onclick = "shownum(num4.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "num" style = "font-weight: bold;" value = "5" name="num5" onclick = "shownum(num5.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "num" style = "font-weight: bold;" value = "6" name="num6" onclick = "shownum(num6.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "sign" style  = "font-size: 18px;" value = "-" name="numsub" onclick = "shownum(numsub.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    </div>
+                    <div class = "thirdrow">
+                    <input type = "button" class = "num" style = "font-weight: bold;" id = "spe" value = "1" name="num1" onclick = "shownum(num1.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "num" style = "font-weight: bold;"  value = "2" name="num2" onclick = "shownum(num2.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "num" style = "font-weight: bold;" value = "3" name="num3" onclick = "shownum(num3.value);calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "sign" value = "+" name="numadd" onclick = "shownum(numadd.value);">
+                    </div>
+                    <div class = "fourthrow">
+                    <input type = "button" class = "num" id = "spe" value = "+/-" name="negetive" onclick="calculatorForm.display.value += '-'">
+                    <input type = "button" class = "num" style = "font-weight: bold;" value = "0" onclick = "calculatorForm.display.value += '0';calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "num" style  = "font-size: 18px;" value = "." onclick = "calculatorForm.display.value += '.';calculatorForm.subResult.value = eval(calculatorForm.display.value)">
+                    <input type = "button" class = "equal" value = "=" onclick = "resultwork();calculatorForm.display.value = eval(calculatorForm.display.value);calculatorForm.subResult.value = '';">
+                    <div>
+                </div>
+                </div>
+            </div> 
+            <!-- <button type = "submit  " onclick = "fg.style.display = 's ddvv'">Read More</button> -->
+        </form>
+    </div>
+    <!--End of Everything-->
+    <script>
+        /*
+        function styheight() {
+            //document.getElementById("subRes").classList.add("display");
+            //document.getElementById("subRes").style.border = '2px solid black';
+            document.getElementById("subRes").style.margin = '2px -0.2px';
+            document.getElementById("subRes").style.height = '50px';
+            document.getElementById("subRes").style.fontSize = '30px';
+            document.getElementById("subRes").style.display = 'block';
+            document.getElementById("subRes").style.fontWeight = 'bold';
+            document.getElementById("subRes").style.width = '231.5px';
+            document.getElementById("display1").style.position = 'absolute';
+            // document.getElementById("display1").style.margin = '-18px 1px';
+            document.getElementById("display1").style.height = '20px';
+            document.getElementById("display1").style.fontSize = '16px';
+            document.getElementById("display1").style.display = 'block';
+            document.getElementById("display1").style.fontWeight = 'normal';
+            //document.getElementById("subRes").setAttribute("name","display");
+            //document.getElementById("subRes").classList.add("display");
+        }
+        */
+        function resultwork() {
+            var d = document.getElementById("display1").value;
+            let arr = d.split("");
+            let arr1 = [];
+            let top = -1;
+            for(var i = 0;i < arr.length;i++) {
+                if(arr[i] == '(') {
+                    top++;
+                    arr1[top] = arr[i];
+                } else if(arr[i] == ')') {
+                    if(top < 0) {
+                        swal("Error!","Invalid Brackets","danger")
+                        quit();
+                    }
+                    top--;
+                } 
+            }
+            if(top < 0) {
+                var a = document.getElementById("display1").value;
+                document.getElementById("subRes1").value = a;
+                document.getElementById("flag1").value = '2';
+                document.getElementById("display1").value = eval(document.getElementById("subRes1").value);
+                quit();
+            } else {
+                swal("Error!","Invalid Brackets","danger")
+                quit();
+            }
+            
+        }
+        function shownum(d) {
+            if (d != 'X' && d != '-' && d != '+' && d != '÷') {
+                document.getElementById("flag").value = '0';
+            }
+            if (document.getElementById("flag").value == '0') {
+                if (d == 'X'){
+                    document.getElementById("display1").value += '*'; 
+                    document.getElementById("flag").value = '1';
+                    // swal("Good job!", "You clicked the button!", "success");                    
+                } else if (d == '-') {
+                    document.getElementById("display1").value += '-'; 
+                    document.getElementById("flag").value = '1';
+                } else if (d == '+') {
+                    document.getElementById("display1").value += '+'; 
+                    document.getElementById("flag").value = '1';
+                } else if (d == '÷') {
+                    document.getElementById("display1").value += '/'; 
+                    document.getElementById("flag").value = '1';
+                } else{                                                                                                             
+                    if (document.getElementById("display1").value == '0') {
+                        document.getElementById("display1").value = d;
+                    } else {
+                        document.getElementById("display1").value += d;
+                        document.getElementById("flag4").value = -1;
+                        console.log("flag4 - " + document.getElementById("flag4").value);
+                    }
+                    document.getElementById("flag").value = '0';
+                } 
+                //document.getElementById("display1").value = d;
+                document.getElementById("flag3").value = d;
+            } else if ((d == 'X' || d == '÷' || d == '-' || d == '+')) {
+                if (d == 'X' || d == '÷' || d == '-' || d == '+'){
+                    /*
+                    if (document.getElementById("flag").value == 1){
+                        document.getElementById("flag3").value = d;
+                        document.getElementById("flag").value = 2;
+                    }*/
+                    //document.getElementById("display1").value += '*'; 
+                    let a = document.getElementById("flag1").value;
+                    //let s = a+1;
+                    a++;
+                    document.getElementById("flag1").value = a;
+                    console.log(document.getElementById("flag1").value);
+                    
+                    if (document.getElementById("flag1").value >= 0){
+                        //arr1[a + 1] = d;
+                        let t = document.getElementById("display1").value;
+                        let arr = t.split("");
+                        let size = arr.length;
+                        arr[arr.length] = null;
+                        console.log("ABCD  " + arr);
+                        document.getElementById("display1").value[size-1] = null;
+                        if (d == 'X') {
+                            arr[arr.length-2] = '*';
+                            document.getElementById("display1").value = arr.join("");
+                        } else {
+                            if (document.getElementById("flag3").value == '-'){
+
+                                console.log("flag3 is   this    " + document.getElementById("flag3").value);
+                                if (d == '÷') {
+                                    arr[arr.length-4] = '/';
+                                    console.log(arr);
+                                    document.getElementById("display1").value = arr.join("");
+                                } else if (d == '-') {
+                                    let i = document.getElementById("flag4").value;
+                                    i++;
+                                    document.getElementById("flag4").value = i;
+                                    console.log("Inside  minus count testing   " + i);
+                                    if (document.getElementById("flag4").value >= 1) {
+                                        console.log("Inside smart bracket inserting");
+                                    } else {
+                                        arr[arr.length] = '(';
+                                        arr[arr.length+1] = '-';
+                                        console.log("arr[2]  -  " + arr[2] + "  arr[3]  -  " + arr[3]);
+                                        document.getElementById("display1").value = arr.join("");
+                                    }
+                                } else if (d == '+') {
+                                    arr[arr.length-4] = '+';
+                                    console.log(arr);
+                                    document.getElementById("display1").value = arr.join("");
+
+                                } else if (d == '*') {
+                                    arr[arr.length-4] = '*';
+                                    console.log(arr);
+                                    document.getElementById("display1").value = arr.join("");
+                                }
+                                
+                            } else{
+                            //console.log("arr1   -   " + arr1);
+                            console.log("d  " + d);
+                            arr[arr.length-2] = d;
+                            console.log("arr  " + arr);
+                            document.getElementById("display1").value = arr.join("");
+                            console.log("Display  " + document.getElementById("display1").value[2]);
+                            document.getElementById("flag3").value = d;
+                        }
+                        console.log(d); 
+                        // swal(d);
+                    }
+                    } else {
+                        //document.getElementById("display1").value += '*';
+                        document.getElementById("display1").value += d;
+                        document.getElementById("flag4").value = -1;
+                        console.log("flag4 - " + document.getElementById("flag4").value);
+                    }
+                }
+            } else {
+                if (d == 'X') { 
+                    document.getElementById("display1").value += '*';
+                } else {
+                    document.getElementById("display1").value += d;
+                    document.getElementById("flag4").value = -1;
+                    console.log("flag4 - " + document.getElementById("flag4").value);
+                }
+            }
+        }
+        function refresh(g) {
+            if (g == 'x sqr') {
+                var i;
+                var d = document.getElementById("display1").value;
+                var arr = d.split("");
+                var arr1 = [null];
+                let index = 1;
+                for(var i = arr.length-1;(arr[i] != '+' && arr[i] != '-' && arr[i] != '*' && arr[i] != '÷' && arr[i] != '(' && arr[i] != ')') && (arr[i] != null);i--) {
+                    
+                }
+                for (var h = i+1; h < arr.length;h++) {
+                    arr1[index] = arr[h];
+                    index++;
+                }
+                console.log(i + " " + arr1);
+                let test = arr1.join("");
+                let r = Math.pow(test,2);
+                index = 1;
+                for (var j = i + 1;j < arr.length;j++) {
+                    arr[j] = null;
+                }
+                arr[i + 1] = r;
+                console.log("The arr is " + arr);
+                /*
+                for (let j = i;j < arr.length;j++) { 
+                    arr[j] = arr1[index];
+                    index++;
+                }*/
+                /*
+                arr[i] += 'sqr('; 
+                arr[arr.length] = ')';
+                */
+                document.getElementById("display1").value = arr.join("");
+            } else if (g == 'sqrt(x)') {
+                var i;
+                var d = document.getElementById("display1").value;
+                var arr = d.split("");
+                var arr1 = [null];
+                let index = 1;
+                for(var i = arr.length-1;(arr[i] != '+' && arr[i] != '-' && arr[i] != '*' && arr[i] != '/' && arr[i] != '(' && arr[i] != ')') && (arr[i] != null);i--) {
+                    
+                }
+                for (var h = i+1; h < arr.length;h++) {
+                    arr1[index] = arr[h];
+                    index++;
+                }
+                console.log(i + " " + arr1);
+                let test = arr1.join("");
+                let r = Math.pow(test,1/2);
+                index = 1;
+                for (var j = i + 1;j < arr.length;j++) {
+                    arr[j] = null;
+                }
+                arr[i + 1] = r;
+                console.log("The arr is " + arr);
+                /*
+                for (let j = i;j < arr.length;j++) { 
+                    arr[j] = arr1[index];
+                    index++;
+                }*/
+                /*
+                arr[i] += 'sqr('; 
+                arr[arr.length] = ')';
+                */
+                document.getElementById("display1").value = arr.join("");
+            }
+        }
+        function del() {
+            let k = document.getElementById("display1").value;
+            let arr = k.split("");
+            arr[arr.length - 1] = null;
+            document.getElementById("display1").value = arr.join("");
+        }
+        function test(){
+            console.log("Inside test Function");    
+        }
+    </script>
+</body>
+</html>
